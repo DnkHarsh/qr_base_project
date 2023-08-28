@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/tinyPadding"
+    app:cardCornerRadius="@dimen/tinyPadding"
+    app:cardElevation="@dimen/microPadding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPermissionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:layout_marginTop="@dimen/normalPadding"
+            android:layout_marginEnd="@dimen/smallPadding"
+            android:fontFamily="@font/medium"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textSize="@dimen/extraNormalSize" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/marging_xxxlargest"
+            android:layout_height="@dimen/marging_xxxlargest"
+            android:layout_marginTop="@dimen/mediumPadding"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/json_permission" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPermissionMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/normalPadding"
+            android:layout_marginTop="@dimen/mediumPadding"
+            android:layout_marginEnd="@dimen/normalPadding"
+            android:fontFamily="@font/regular"
+            android:gravity="center_horizontal"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textSize="@dimen/mediumSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/normalPadding"
+            android:layout_marginTop="@dimen/largerPadding"
+            android:layout_marginBottom="@dimen/smallPadding"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSkip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/miniPadding"
+                android:layout_weight="1"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:padding="@dimen/mediumPadding"
+                android:text="@string/cancel"
+                android:textAlignment="center"
+                android:textSize="@dimen/extraMediumSize" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAllow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/miniPadding"
+                android:layout_weight="1"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:padding="@dimen/mediumPadding"
+                android:text="@string/allow"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/extraMediumSize" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

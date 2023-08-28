@@ -1,0 +1,31 @@
+<resources>
+    <!-- padding /margins-->
+
+    <dimen name="microPadding">6dp</dimen>
+    <dimen name="miniPadding">8dp</dimen>
+    <dimen name="tinyPadding">9dp</dimen>
+    <dimen name="smallestPadding">11dp</dimen>
+    <dimen name="smallPadding">12dp</dimen>
+    <dimen name="mediumPadding">14dp</dimen>
+    <dimen name="extraMediumPadding">16dp</dimen>
+    <dimen name="normalPadding">19dp</dimen>
+    <dimen name="extraNormalPadding">22dp</dimen>
+    <dimen name="largePadding">24dp</dimen>
+    <dimen name="xlargePadding">27dp</dimen>
+    <dimen name="xxlargePadding">29dp</dimen>
+    <dimen name="xxxLargePadding">35dp</dimen>
+    <dimen name="largerPadding">38dp</dimen>
+    <dimen name="xlargerPadding">40dp</dimen>
+    <dimen name="xxlargerPadding">44dp</dimen>
+    <dimen name="largestPadding">47dp</dimen>
+    <dimen name="marging_xxlargest">100dp</dimen>
+    <dimen name="marging_xxxlargest">130dp</dimen>
+    <dimen name="marging_xxxxlargest">153dp</dimen>
+
+    <dimen name="demoIconSize">150dp</dimen>
+    <dimen name="demo_iv">50dp</dimen>
+
+    <!--Text Sizes-->
+
+
+</resources>

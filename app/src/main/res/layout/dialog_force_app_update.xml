@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/tinyPadding"
+    app:cardCornerRadius="@dimen/tinyPadding"
+    app:cardElevation="@dimen/microPadding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPermissionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:layout_marginTop="@dimen/normalPadding"
+            android:layout_marginEnd="@dimen/smallPadding"
+            android:fontFamily="@font/bold"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/normalSize" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/marging_xxxlargest"
+            android:layout_height="@dimen/marging_xxxlargest"
+            android:layout_marginTop="@dimen/mediumPadding"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/json_permission" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/normalPadding"
+            android:layout_marginTop="@dimen/mediumPadding"
+            android:layout_marginEnd="@dimen/normalPadding"
+            android:fontFamily="@font/semibold"
+            android:gravity="center_horizontal"
+            android:text="Mandatory Update"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/normalSize" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/normalPadding"
+            android:layout_marginTop="@dimen/mediumPadding"
+            android:layout_marginEnd="@dimen/normalPadding"
+            android:fontFamily="@font/medium"
+            android:gravity="center_horizontal"
+            android:text="We have fixed some critical bugs and improved performance."
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/extraMediumSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/normalPadding"
+            android:layout_marginTop="@dimen/normalPadding"
+            android:layout_marginBottom="@dimen/smallPadding"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/miniPadding"
+                android:layout_weight="1"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:padding="@dimen/mediumPadding"
+                android:text="Close App"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/normalSize" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/update"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/miniPadding"
+                android:layout_weight="1"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:padding="@dimen/mediumPadding"
+                android:text="Update"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/normalSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

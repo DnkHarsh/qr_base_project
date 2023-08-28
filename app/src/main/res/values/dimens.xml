@@ -1,0 +1,35 @@
+<resources>
+    <!-- padding /margins-->
+    <dimen name="microPadding">2dp</dimen>
+    <dimen name="miniPadding">4dp</dimen>
+    <dimen name="tinyPadding">5dp</dimen>
+    <dimen name="smallestPadding">7dp</dimen>
+    <dimen name="smallPadding">8dp</dimen>
+    <dimen name="mediumPadding">10dp</dimen>
+    <dimen name="extraMediumPadding">12dp</dimen>
+    <dimen name="normalPadding">15dp</dimen>
+    <dimen name="extraNormalPadding">18dp</dimen>
+    <dimen name="largePadding">20dp</dimen>
+    <dimen name="xlargePadding">23dp</dimen>
+    <dimen name="xxlargePadding">25dp</dimen>
+    <dimen name="xxxLargePadding">30dp</dimen>
+    <dimen name="largerPadding">34dp</dimen>
+    <dimen name="xlargerPadding">37dp</dimen>
+    <dimen name="xxlargerPadding">40dp</dimen>
+    <dimen name="largestPadding">43dp</dimen>
+    <dimen name="playstore_iv">60dp</dimen>
+
+
+    <!--Text Sizes-->
+    <dimen name="tinnySize">7sp</dimen>
+    <dimen name="smallerSize">8sp</dimen>
+    <dimen name="smallSize">10sp</dimen>
+    <dimen name="mediumSize">12sp</dimen>
+    <dimen name="extraMediumSize">14sp</dimen>
+    <dimen name="normalSize">16sp</dimen>
+    <dimen name="extraNormalSize">17sp</dimen>
+    <dimen name="largeSize">20sp</dimen>
+    <dimen name="xLargeSize">22sp</dimen>
+    <dimen name="xxLargeSize">25sp</dimen>
+    <dimen name="xxxLargeSize">32sp</dimen>
+</resources>

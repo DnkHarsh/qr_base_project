@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/tinyPadding"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/mediumPadding"
+        android:layout_marginVertical="@dimen/tinyPadding"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/ic_premium" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/semibold"
+                android:gravity="center"
+                android:text="@string/ad_free_version"
+                android:textColor="@color/consent_color"
+                android:textSize="@dimen/normalSize" />
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tinyPadding"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:text="@string/buy_adfree_msg"
+            android:textAlignment="center"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/extraMediumSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mediumPadding"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/smallPadding">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBuy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingHorizontal="@dimen/largePadding"
+                    android:paddingVertical="@dimen/miniPadding"
+                    android:text="Buy Premium"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/normalSize"
+                    app:fontFamily="@font/semibold" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

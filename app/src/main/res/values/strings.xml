@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ad_attribution">Ad</string>
+    <string name="version">Version: </string>
+    <string name="ok">OK</string>
+    <string name="title_exit_dialog">Do you want to exit app?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="yes_sure">Yes,sure</string>
+    <string name="rate_us">Rate us</string>
+    <string name="do_you_want_to_exit">Do you want to exit ?</string>
+    <string name="buy">Buy</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="exit">Exit</string>
+    <string name="ads_by_adtorque">Ads By AdTorque</string>
+    <string name="enjoying_the_app">Enjoying the App?</string>
+    <string name="rate_this_app">Rate this App</string>
+    <string name="rate_app_msg">Enjoying our app? If you find it helpful, please take a moment to rate and provide feedback. Your opinion matters and helps us improve the app experience.</string>
+    <string name="later">Later</string>
+    <string name="no_thanks">No, Thanks</string>
+    <string name="rate_now">Rate Now</string>
+    <!--    TODO: Change permission message as per permissions used in app-->
+    <string name="permission_msg">Add message for permission used in app</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit_title">Exit ?</string>
+    <string name="download">Download</string>
+    <string name="rate_app_msg_jsk">Enjoying this app?\nPlease give us a review</string>
+    <string name="how_do_you_like_n_strings_appname">How do you like?\n @string/app_name ..?</string>
+    <string name="rate_app">Rate App</string>
+    <string name="allow">Allow</string>
+    <string name="skip">Skip</string>
+    <string name="msg_update_available">A Newer Version of App is Available on Play store.  Update Now and Enjoy features of Application.</string>
+    <string name="update_now">Update Now</string>
+    <string name="new_version">New Version :\u0020</string>
+    <string name="scheduled_notification">Scheduled Notification</string>
+    <string name="license">License</string>
+    <string name="license_credits">License &amp; Credits</string>
+    <string name="settings">Settings</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="check_update">Check Update</string>
+    <string name="user_consent">User Consent</string>
+    <string name="privacy_consent">Privacy &amp; Policy</string>
+    <string name="sg_rate_app_msg">If you enjoy using this app,would you like to rate us in Play Store.?\nThank you for your support!</string>
+    <string name="no_connection">No Internet Connection !</string>
+    <string name="no_connection_msg">Turn on Mobile data or Wifi.</string>
+    <string name="share_app">Share App</string>
+    <string name="_continue">Continue</string>
+    <string name="yes_buy_the_app">Yes, Buy the Ads free version!</string>
+    <string name="continue_to_purchase_add_free_version_and_use_app_without_any_advertisement_interaction">Continue to purchase ad free version and use app without any advertisement interaction.</string>
+    <string name="share_app_message">write share app msg</string>
+
+    <string name="are_you_sure_you_want_to_open">Are you sure you want to open \t</string>
+    <string name="in_playstore">\tin Play Store?</string>
+    <string name="buy_adfree_version">Buy AdFree Version</string>
+    <string name="please_wait">Please wait</string>
+    <string name="not_now">Not Now</string>
+    <string name="msg_check_for_update">Would you like to check if the update is available on play store ?</string>
+    <string name="check">Check Now</string>
+    <string name="ad_free_version">Buy Ad Free Version</string>
+    <string name="buy_adfree_msg">Supercharge your app experience with our premium ad-free version! Say goodbye to frustrating interruptions and hello to uninterrupted bliss.</string>
+    <string name="share_image_msg">Share multiple Images Msg</string>
+
+    <string name="transaction_pending" translatable="false">Transaction pending</string>
+    <string name="buy_adfree_pending_msg">Your transaction is still incomplete, please complete transaction for ad free version of the app.</string>
+    <string name="note">--: NOTE :--</string>
+    <string name="install_now">Install Now</string>
+    <string name="free">FREE</string>
+    <string name="install">Install</string>
+    <string name="permission">Permission</string>
+    <string name="camera_permission_msg">Click on Open Settings > Permission > allow camera permission</string>
+    <string name="camera_permission_title">Camera Permission</string>
+    <string name="storage_permission_msg"> Click On open Settings > allow write storage permission</string>
+    <string name="storage_write_permission_msg">Allow access your device\'s storage to save your work videos and images.</string>
+    <string name="storage_permission_title">Storage Permission</string>
+    <string name="nav_open">Nav Open</string>
+    <string name="nav_close">Nav Close</string>
+    <string name="no_data_found">No data found</string>
+    <string name="update_downloaded_message">An update has just been downloaded</string>
+</resources>

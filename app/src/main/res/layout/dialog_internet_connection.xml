@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llAlertDialog"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/tinyPadding"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@dimen/microPadding"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="@dimen/marging_xxxlargest"
+                    android:layout_height="@dimen/marging_xxxlargest"
+                    android:layout_marginTop="@dimen/mediumPadding"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/json_no_internet" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/microPadding"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:text="@string/no_connection"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/normalSize" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSecondaryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/mediumPadding"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/no_connection_msg"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/mediumSize" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivClose"
+                android:layout_width="@dimen/xlargePadding"
+                android:layout_height="@dimen/xlargePadding"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/smallPadding"
+                android:layout_marginEnd="@dimen/smallPadding"
+                android:tint="@color/gray"
+                app:srcCompat="@drawable/ic_close_dialog" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

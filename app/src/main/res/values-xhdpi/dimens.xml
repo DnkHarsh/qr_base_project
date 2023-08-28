@@ -1,0 +1,22 @@
+<resources>
+    <!-- padding /margins-->
+    <dimen name="microPadding">4dp</dimen>
+    <dimen name="miniPadding">6dp</dimen>
+    <dimen name="tinyPadding">7dp</dimen>
+    <dimen name="smallestPadding">9dp</dimen>
+    <dimen name="smallPadding">10dp</dimen>
+    <dimen name="mediumPadding">12dp</dimen>
+    <dimen name="extraMediumPadding">14dp</dimen>
+    <dimen name="normalPadding">17dp</dimen>
+    <dimen name="extraNormalPadding">20dp</dimen>
+    <dimen name="largePadding">22dp</dimen>
+    <dimen name="xlargePadding">25dp</dimen>
+    <dimen name="xxlargePadding">27dp</dimen>
+    <dimen name="xxxLargePadding">33dp</dimen>
+    <dimen name="largerPadding">36dp</dimen>
+    <dimen name="xlargerPadding">39dp</dimen>
+    <dimen name="xxlargerPadding">43dp</dimen>
+    <dimen name="largestPadding">45dp</dimen>
+    <dimen name="card_corner_radius">30dp</dimen>
+    <dimen name="small_card_height_width">58dp</dimen>
+</resources>
