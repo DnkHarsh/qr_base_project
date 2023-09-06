@@ -12,7 +12,7 @@ object EventLogger {
     private val analytics = Firebase.analytics
 
     fun logScreenLoad(screenName: String) {
-        if (BuildConfig.DEBUG && BuildConfig.FLAVOR == "signed") {
+        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
             val bundle = Bundle().apply {
                 putString("screen_name", screenName)
             }
@@ -21,7 +21,7 @@ object EventLogger {
     }
 
     fun logViewClick(viewName: String, screenName: String) {
-        if (BuildConfig.DEBUG && BuildConfig.FLAVOR == "signed") {
+        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
             val bundle = Bundle().apply {
                 putString("view_name", viewName)
                 putString("screen_name", screenName)
@@ -31,7 +31,7 @@ object EventLogger {
     }
 
     fun logAdLoaded(adType: AdType, adServer: AdServer) {
-        if (BuildConfig.DEBUG && BuildConfig.FLAVOR == "signed") {
+        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
             val bundle = Bundle().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
@@ -41,7 +41,7 @@ object EventLogger {
     }
 
     fun logAdFailed(adType: AdType, adServer: AdServer, message: String?) {
-        if (BuildConfig.DEBUG && BuildConfig.FLAVOR == "signed") {
+        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
             val bundle = Bundle().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
@@ -52,7 +52,7 @@ object EventLogger {
     }
 
     fun logAdImpression(adType: AdType, adServer: AdServer) {
-        if (BuildConfig.DEBUG && BuildConfig.FLAVOR == "signed") {
+        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
             val bundle = Bundle().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
@@ -62,7 +62,7 @@ object EventLogger {
     }
 
     fun logAdRewardEarned(adType: AdType, adServer: AdServer) {
-        if (BuildConfig.DEBUG && BuildConfig.FLAVOR == "signed") {
+        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
             val bundle = Bundle().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
@@ -72,7 +72,7 @@ object EventLogger {
     }
 
     fun logPremiumPurchased() {
-        if (BuildConfig.DEBUG && BuildConfig.FLAVOR == "signed") {
+        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
             val bundle = Bundle()
             analytics.logEvent("ad_reward_earned", bundle)
         }
