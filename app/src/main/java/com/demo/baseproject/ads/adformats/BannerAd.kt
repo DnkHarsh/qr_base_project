@@ -16,7 +16,7 @@ class BannerAd(
     private val activity: Activity,
     private val adLayout: ViewGroup,
     private val adPlacementResponse: AdPlacementResponse,
-    private val adStatusListener: AdStatusListener
+    private val adStatusListener: AdStatusListener? = null
 ) {
     private var adListener: BannerAdListener? = null
 

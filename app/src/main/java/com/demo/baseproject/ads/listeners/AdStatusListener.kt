@@ -12,4 +12,6 @@ interface AdStatusListener {
     fun onAdFailed(error: String?) {}
 
     fun onUserEarnedReward() {}
+
+    fun onDismissFullScreenAd() {}
 }

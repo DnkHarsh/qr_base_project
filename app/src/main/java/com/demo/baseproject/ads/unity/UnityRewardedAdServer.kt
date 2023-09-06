@@ -12,7 +12,7 @@ import com.unity3d.ads.UnityAds
 import com.unity3d.ads.UnityAdsShowOptions
 
 class UnityRewardedAdServer(
-    private val ctx: Activity,
+    private val activity: Activity,
     private val adUnitId: String,
     private val adStatusListener: AdStatusListener
 ) : FullScreenAdListener {
@@ -41,7 +41,7 @@ class UnityRewardedAdServer(
     override fun show() {
         if (isAdLoaded) {
             UnityAds.show(
-                ctx,
+                activity,
                 adUnitId,
                 UnityAdsShowOptions(),
                 object : IUnityAdsShowListener {
@@ -67,6 +67,7 @@ class UnityRewardedAdServer(
                         if (state?.equals(UnityAds.UnityAdsShowCompletionState.COMPLETED) == true) {
                             adStatusListener.onUserEarnedReward()
                             EventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.UNITY)
+                            adStatusListener.onDismissFullScreenAd()
                         }
                     }
                 }

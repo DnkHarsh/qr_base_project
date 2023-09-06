@@ -14,7 +14,7 @@ import com.demo.baseproject.ads.unity.UnityInterstitialAdServer
 class InterstitialAd(
     private val activity: Activity,
     private val adPlacementResponse: AdPlacementResponse,
-    private val adStatusListener: AdStatusListener
+    private val adStatusListener: AdStatusListener? = null
 ) {
     private var adListener: FullScreenAdListener? = null
 

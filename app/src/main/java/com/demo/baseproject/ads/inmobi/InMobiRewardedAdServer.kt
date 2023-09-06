@@ -14,7 +14,7 @@ import com.inmobi.ads.listeners.InterstitialAdEventListener
 
 
 class InMobiRewardedAdServer(
-    private val ctx: Activity,
+    private val activity: Activity,
     private val adUnitId: String,
     private val adStatusListener: AdStatusListener
 ) : FullScreenAdListener {
@@ -23,7 +23,7 @@ class InMobiRewardedAdServer(
     private var isAdLoaded = false
 
     init {
-        interstitialAd = InMobiInterstitial(ctx, adUnitId.toLong(), object :
+        interstitialAd = InMobiInterstitial(activity, adUnitId.toLong(), object :
             InterstitialAdEventListener() {
             override fun onAdLoadSucceeded(p0: InMobiInterstitial, p1: AdMetaInfo) {
                 super.onAdLoadSucceeded(p0, p1)
@@ -45,6 +45,11 @@ class InMobiRewardedAdServer(
                 p1?.forEach {
                     Log.v("ISHAN", "Unlocked " + it.key + " " + it.value)
                 }
+            }
+
+            override fun onAdDismissed(p0: InMobiInterstitial) {
+                super.onAdDismissed(p0)
+                adStatusListener.onDismissFullScreenAd()
             }
         })
         interstitialAd.load()

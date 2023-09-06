@@ -17,7 +17,7 @@ import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoa
  * A class that serves a Gam Rewarded Videos Ad. All the methods in this class are self-explanatory, hence not documented.
  */
 class GamRewardedInterstitialAdServer(
-    private val ctx: Activity,
+    private val activity: Activity,
     private val adUnitId: String,
     private val adStatusListener: AdStatusListener
 ) : FullScreenAdListener {
@@ -29,11 +29,12 @@ class GamRewardedInterstitialAdServer(
 
     private fun initAdAndSetListener() {
         RewardedInterstitialAd.load(
-            ctx,
+            activity,
             adUnitId,
             AdManagerAdRequest.Builder().build(),
             object : RewardedInterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
+                    super.onAdFailedToLoad(adError)
                     adStatusListener.onAdFailed(adError.message)
                     EventLogger.logAdFailed(
                         AdType.REWARDED_INTERSTITIAL,
@@ -43,6 +44,7 @@ class GamRewardedInterstitialAdServer(
                 }
 
                 override fun onAdLoaded(rewardedAd: RewardedInterstitialAd) {
+                    super.onAdLoaded(rewardedAd)
                     adStatusListener.onAdLoaded()
                     EventLogger.logAdLoaded(AdType.REWARDED_INTERSTITIAL, AdServer.GAM)
                     rewardedAdObject = rewardedAd
@@ -58,11 +60,16 @@ class GamRewardedInterstitialAdServer(
                 adStatusListener.onAdFailed(p0.message)
                 EventLogger.logAdFailed(AdType.REWARDED_INTERSTITIAL, AdServer.GAM, p0.message)
             }
+
+            override fun onAdDismissedFullScreenContent() {
+                super.onAdDismissedFullScreenContent()
+                adStatusListener.onDismissFullScreenAd()
+            }
         }
     }
 
     override fun show() {
-        rewardedAdObject?.show(ctx) {
+        rewardedAdObject?.show(activity) {
             adStatusListener.onUserEarnedReward()
             EventLogger.logAdRewardEarned(AdType.REWARDED_INTERSTITIAL, AdServer.GAM)
         }

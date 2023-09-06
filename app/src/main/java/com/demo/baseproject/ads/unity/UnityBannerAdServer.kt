@@ -12,19 +12,20 @@ import com.unity3d.services.banners.BannerView
 import com.unity3d.services.banners.UnityBannerSize
 
 class UnityBannerAdServer(
-    private val ctx: Activity,
+    private val activity: Activity,
     private val adLayout: ViewGroup,
     private val adUnitId: String,
-    private val adStatusListener: AdStatusListener
+    private val adStatusListener: AdStatusListener?
 ) : BannerAdListener {
 
-    private var adView = BannerView(ctx, adUnitId, UnityBannerSize(320, 50))
+    private var adView = BannerView(activity, adUnitId, UnityBannerSize(320, 50))
 
     init {
         adView.listener = object : BannerView.IListener {
             override fun onBannerLoaded(bannerAdView: BannerView?) {
-                adStatusListener.onAdLoaded()
+                adStatusListener?.onAdLoaded()
                 EventLogger.logAdLoaded(AdType.BANNER, AdServer.UNITY)
+                adStatusListener?.onAdImpression()
             }
 
             override fun onBannerClick(bannerAdView: BannerView?) {
@@ -34,7 +35,7 @@ class UnityBannerAdServer(
                 bannerAdView: BannerView?,
                 errorInfo: BannerErrorInfo?
             ) {
-                adStatusListener.onAdFailed(errorInfo?.errorMessage)
+                adStatusListener?.onAdFailed(errorInfo?.errorMessage)
                 EventLogger.logAdFailed(AdType.BANNER, AdServer.UNITY, errorInfo?.errorMessage)
             }
 

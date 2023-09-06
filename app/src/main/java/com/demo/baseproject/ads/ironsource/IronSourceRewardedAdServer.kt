@@ -29,6 +29,7 @@ class IronSourceRewardedAdServer(
             }
 
             override fun onAdClosed(adInfo: AdInfo) {
+                adStatusListener.onDismissFullScreenAd()
             }
 
             override fun onAdReady(p0: AdInfo?) {

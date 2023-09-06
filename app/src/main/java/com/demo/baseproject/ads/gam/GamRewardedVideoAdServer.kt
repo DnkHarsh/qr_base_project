@@ -17,7 +17,7 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
  * A class that serves a Gam Rewarded Videos Ad. All the methods in this class are self-explanatory, hence not documented.
  */
 class GamRewardedVideoAdServer(
-    private val ctx: Activity,
+    private val activity: Activity,
     private val adUnitId: String,
     private val adStatusListener: AdStatusListener
 ) : FullScreenAdListener {
@@ -29,16 +29,18 @@ class GamRewardedVideoAdServer(
 
     private fun initAdAndSetListener() {
         RewardedAd.load(
-            ctx,
+            activity,
             adUnitId,
             AdManagerAdRequest.Builder().build(),
             object : RewardedAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
+                    super.onAdFailedToLoad(adError)
                     adStatusListener.onAdFailed(adError.message)
                     EventLogger.logAdFailed(AdType.REWARDED, AdServer.GAM, adError.message)
                 }
 
                 override fun onAdLoaded(rewardedAd: RewardedAd) {
+                    super.onAdLoaded(rewardedAd)
                     adStatusListener.onAdLoaded()
                     EventLogger.logAdLoaded(AdType.REWARDED, AdServer.GAM)
                     rewardedAdObject = rewardedAd
@@ -54,11 +56,16 @@ class GamRewardedVideoAdServer(
                 adStatusListener.onAdFailed(p0.message)
                 EventLogger.logAdFailed(AdType.REWARDED, AdServer.GAM, p0.message)
             }
+
+            override fun onAdDismissedFullScreenContent() {
+                super.onAdDismissedFullScreenContent()
+                adStatusListener.onDismissFullScreenAd()
+            }
         }
     }
 
     override fun show() {
-        rewardedAdObject?.show(ctx) {
+        rewardedAdObject?.show(activity) {
             adStatusListener.onUserEarnedReward()
             EventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.GAM)
         }

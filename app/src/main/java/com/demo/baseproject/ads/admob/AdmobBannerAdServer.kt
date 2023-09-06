@@ -20,7 +20,7 @@ class AdmobBannerAdServer(
     private val ctx: Context,
     private val adLayout: ViewGroup,
     private val adUnitId: String,
-    private val adStatusListener: AdStatusListener
+    private val adStatusListener: AdStatusListener?
 ) : BannerAdListener {
     private var adView: AdView = AdView(ctx)
     private var adRequest: AdRequest
@@ -36,7 +36,7 @@ class AdmobBannerAdServer(
         adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 super.onAdLoaded()
-                adStatusListener.onAdLoaded()
+                adStatusListener?.onAdLoaded()
                 EventLogger.logAdLoaded(AdType.BANNER, AdServer.ADMOB)
 
                 adLayout.removeAllViews()
@@ -45,13 +45,13 @@ class AdmobBannerAdServer(
 
             override fun onAdFailedToLoad(p0: LoadAdError) {
                 super.onAdFailedToLoad(p0)
-                adStatusListener.onAdFailed(p0.message)
+                adStatusListener?.onAdFailed(p0.message)
                 EventLogger.logAdFailed(AdType.BANNER, AdServer.ADMOB, p0.message)
             }
 
             override fun onAdImpression() {
                 super.onAdImpression()
-                adStatusListener.onAdImpression()
+                adStatusListener?.onAdImpression()
                 EventLogger.logAdImpression(AdType.BANNER, AdServer.ADMOB)
             }
         }

@@ -15,7 +15,7 @@ import com.ironsource.mediationsdk.sdk.LevelPlayInterstitialListener
  */
 class IronSourceInterstitialAdServer(
     private val adUnitId: String,
-    private val adStatusListener: AdStatusListener
+    private val adStatusListener: AdStatusListener?
 ) : FullScreenAdListener {
     init {
         initAdAndSetListener()
@@ -24,12 +24,12 @@ class IronSourceInterstitialAdServer(
     private fun initAdAndSetListener() {
         IronSource.setLevelPlayInterstitialListener(object : LevelPlayInterstitialListener {
             override fun onAdReady(p0: AdInfo?) {
-                adStatusListener.onAdLoaded()
+                adStatusListener?.onAdLoaded()
                 EventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.IRONSOURCE)
             }
 
             override fun onAdLoadFailed(p0: IronSourceError?) {
-                adStatusListener.onAdFailed(p0?.errorMessage)
+                adStatusListener?.onAdFailed(p0?.errorMessage)
                 EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.IRONSOURCE, p0?.errorMessage)
             }
 
@@ -37,12 +37,12 @@ class IronSourceInterstitialAdServer(
             }
 
             override fun onAdShowSucceeded(p0: AdInfo?) {
-                adStatusListener.onAdImpression()
+                adStatusListener?.onAdImpression()
                 EventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.IRONSOURCE)
             }
 
             override fun onAdShowFailed(p0: IronSourceError?, p1: AdInfo?) {
-                adStatusListener.onAdFailed(p0?.errorMessage)
+                adStatusListener?.onAdFailed(p0?.errorMessage)
                 EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.IRONSOURCE, p0?.errorMessage)
             }
 
@@ -50,6 +50,7 @@ class IronSourceInterstitialAdServer(
             }
 
             override fun onAdClosed(p0: AdInfo?) {
+                adStatusListener?.onDismissFullScreenAd()
             }
         })
         IronSource.loadInterstitial()

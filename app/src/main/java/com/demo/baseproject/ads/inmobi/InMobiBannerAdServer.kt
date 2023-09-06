@@ -16,7 +16,7 @@ class InMobiBannerAdServer(
     private val ctx: Context,
     private val adLayout: ViewGroup,
     private val adUnitId: String,
-    private val adStatusListener: AdStatusListener
+    private val adStatusListener: AdStatusListener?
 ) : BannerAdListener {
 
     private val adView = InMobiBanner(ctx, adUnitId.toLong())
@@ -28,25 +28,25 @@ class InMobiBannerAdServer(
         adView.setListener(object : BannerAdEventListener() {
             override fun onAdFetchFailed(p0: InMobiBanner, p1: InMobiAdRequestStatus) {
                 super.onAdFetchFailed(p0, p1)
-                adStatusListener.onAdFailed(p1.message)
+                adStatusListener?.onAdFailed(p1.message)
                 EventLogger.logAdFailed(AdType.BANNER, AdServer.INMOBI, p1.message)
             }
 
             override fun onAdLoadSucceeded(p0: InMobiBanner, p1: AdMetaInfo) {
                 super.onAdLoadSucceeded(p0, p1)
-                adStatusListener.onAdLoaded()
+                adStatusListener?.onAdLoaded()
                 EventLogger.logAdLoaded(AdType.BANNER, AdServer.INMOBI)
             }
 
             override fun onAdLoadFailed(p0: InMobiBanner, p1: InMobiAdRequestStatus) {
                 super.onAdLoadFailed(p0, p1)
-                adStatusListener.onAdFailed(p1.message)
+                adStatusListener?.onAdFailed(p1.message)
                 EventLogger.logAdFailed(AdType.BANNER, AdServer.INMOBI, p1.message)
             }
 
             override fun onAdImpression(p0: InMobiBanner) {
                 super.onAdImpression(p0)
-                adStatusListener.onAdImpression()
+                adStatusListener?.onAdImpression()
                 EventLogger.logAdImpression(AdType.BANNER, AdServer.INMOBI)
             }
         })

@@ -23,7 +23,7 @@ class IronSourceBannerAdServer(
     private val activity: Activity,
     private val adLayout: ViewGroup,
     private val adUnitId: String,
-    private val adStatusListener: AdStatusListener
+    private val adStatusListener: AdStatusListener?
 ) : BannerAdListener {
     private var adView: IronSourceBannerLayout? = null
 
@@ -35,7 +35,7 @@ class IronSourceBannerAdServer(
         IronSource.loadBanner(adView, adUnitId)
         adView?.levelPlayBannerListener = object : LevelPlayBannerListener {
             override fun onAdLoaded(p0: AdInfo?) {
-                adStatusListener.onAdLoaded()
+                adStatusListener?.onAdLoaded()
                 EventLogger.logAdLoaded(AdType.BANNER, AdServer.IRONSOURCE)
 
                 adLayout.removeAllViews()
@@ -43,7 +43,7 @@ class IronSourceBannerAdServer(
             }
 
             override fun onAdLoadFailed(p0: IronSourceError?) {
-                adStatusListener.onAdFailed(p0?.errorMessage)
+                adStatusListener?.onAdFailed(p0?.errorMessage)
                 EventLogger.logAdFailed(AdType.BANNER, AdServer.IRONSOURCE, p0?.errorMessage)
             }
 
@@ -54,7 +54,7 @@ class IronSourceBannerAdServer(
             }
 
             override fun onAdScreenPresented(p0: AdInfo?) {
-                adStatusListener.onAdImpression()
+                adStatusListener?.onAdImpression()
                 EventLogger.logAdImpression(AdType.BANNER, AdServer.IRONSOURCE)
             }
 
