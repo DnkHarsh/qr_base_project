@@ -18,7 +18,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.demo.baseproject.R
-import com.demo.baseproject.activities.SplashActivity
+import com.demo.baseproject.ui.activities.SplashActivity
 import com.demo.baseproject.utils.logger.infoLog
 import java.util.Date
 import java.util.Random

@@ -1,4 +1,4 @@
-package com.demo.baseproject.activities
+package com.demo.baseproject.ui.activities
 
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
@@ -11,6 +11,7 @@ import com.demo.baseproject.databinding.ActivityMainBinding
 import com.demo.baseproject.network.NetworkConstants
 import com.demo.baseproject.notification.workmanager.NotificationWorkStart
 import com.demo.baseproject.storage.AppPref
+import com.demo.baseproject.ui.base.BaseActivity
 import com.demo.baseproject.utils.GoogleInAppReview
 import com.demo.baseproject.utils.extensions.getDelayFromNowTime
 import com.demo.baseproject.utils.extensions.showMandatoryUpdateDialog

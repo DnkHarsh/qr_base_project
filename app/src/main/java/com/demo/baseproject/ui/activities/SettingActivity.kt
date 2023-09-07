@@ -1,9 +1,10 @@
-package com.demo.baseproject.activities
+package com.demo.baseproject.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
 import com.demo.baseproject.R
 import com.demo.baseproject.databinding.ActivitySettingsBinding
+import com.demo.baseproject.ui.base.BaseActivity
 import com.demo.baseproject.utils.extensions.rateApp
 import com.demo.baseproject.utils.extensions.shareApp
 import com.demo.baseproject.utils.extensions.showRateAppDialog

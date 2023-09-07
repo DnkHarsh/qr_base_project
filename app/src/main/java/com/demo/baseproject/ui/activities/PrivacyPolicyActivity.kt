@@ -1,4 +1,4 @@
-package com.demo.baseproject.activities
+package com.demo.baseproject.ui.activities
 
 import android.os.Bundle
 import android.webkit.WebView
@@ -6,6 +6,7 @@ import android.webkit.WebViewClient
 import com.demo.baseproject.R
 import com.demo.baseproject.databinding.ActivityPrivacyPolicyBinding
 import com.demo.baseproject.network.NetworkConstants
+import com.demo.baseproject.ui.base.BaseActivity
 import com.demo.baseproject.utils.extensions.gone
 import dagger.hilt.android.AndroidEntryPoint
 

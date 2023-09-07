@@ -20,16 +20,17 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".ui.activities.SplashActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
@@ -37,7 +38,7 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             tools:replace="android:theme" />
         <activity
-            android:name=".activities.SettingActivity"
+            android:name=".ui.activities.SettingActivity"
             android:screenOrientation="portrait" />
 
         <service

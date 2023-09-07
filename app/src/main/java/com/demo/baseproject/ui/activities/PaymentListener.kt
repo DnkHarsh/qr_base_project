@@ -1,4 +1,4 @@
-package com.demo.baseproject.activities
+package com.demo.baseproject.ui.activities
 
 interface PaymentListener {
 

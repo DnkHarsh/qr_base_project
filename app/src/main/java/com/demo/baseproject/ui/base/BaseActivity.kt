@@ -1,4 +1,4 @@
-package com.demo.baseproject.activities
+package com.demo.baseproject.ui.base
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,6 +21,7 @@ import com.android.billingclient.api.QueryProductDetailsParams
 import com.android.billingclient.api.QueryPurchasesParams
 import com.demo.baseproject.R
 import com.demo.baseproject.storage.AppPref
+import com.demo.baseproject.ui.activities.PaymentListener
 import com.demo.baseproject.utils.extensions.getCountryBasedOnSimCardOrNetwork
 import com.demo.baseproject.utils.extensions.showCustomTwoButtonAlertDialog
 
@@ -38,11 +39,11 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
         setContentView(binding.root)
     }
 
-    fun setListener(listener: PaymentListener) {
+    fun setPaymentListener(listener: PaymentListener) {
         paymentListener = listener
     }
 
-    fun removeListener() {
+    fun removePaymentListener() {
         paymentListener = null
     }
 
@@ -245,7 +246,6 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
      * You have to call this method in activity's device's onBackPressed method and back button.
      */
     fun onBackPressFromActivity() {
-//        TODO("NEED to check and redesign dialog")
         try {
             showCustomTwoButtonAlertDialog(getString(R.string.app_name),
                 getString(R.string.title_exit_dialog),

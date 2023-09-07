@@ -2,7 +2,7 @@ package com.demo.baseproject.notification.push.service
 
 
 import android.content.Intent
-import com.demo.baseproject.activities.SplashActivity
+import com.demo.baseproject.ui.activities.SplashActivity
 import com.demo.baseproject.application.BaseApplication
 import com.demo.baseproject.utils.extensions.showNotification
 import com.google.firebase.messaging.FirebaseMessagingService
