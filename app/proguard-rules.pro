@@ -45,9 +45,6 @@
 -keep class com.demo.baseproject.notification.**{*;}
 -dontwarn com.demo.baseproject.notification.**
 
--keep class com.demo.baseproject.datalayers.**{*;}
--dontwarn com.demo.baseproject.datalayers.**
-
 ## Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep class * extends com.bumptech.glide.module.AppGlideModule {
