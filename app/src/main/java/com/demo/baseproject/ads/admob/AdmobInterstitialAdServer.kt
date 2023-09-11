@@ -12,6 +12,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import javax.inject.Inject
 
 /**
  * A class that serves a Admob Rewarded Video Ads. All the methods in this class are self-explanatory, hence not documented.
@@ -19,6 +20,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 class AdmobInterstitialAdServer(
     private val activity: Activity,
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener?
 ) : FullScreenAdListener {
 
@@ -37,13 +39,13 @@ class AdmobInterstitialAdServer(
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     super.onAdFailedToLoad(adError)
                     adStatusListener?.onAdFailed(adError.message)
-                    EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.ADMOB, adError.message)
+                    eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.ADMOB, adError.message)
                 }
 
                 override fun onAdLoaded(rewardedAd: InterstitialAd) {
                     super.onAdLoaded(rewardedAd)
                     adStatusListener?.onAdLoaded()
-                    EventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.ADMOB)
+                    eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.ADMOB)
                     interstitialAd = rewardedAd
                     setScreenListener()
                 }
@@ -55,13 +57,13 @@ class AdmobInterstitialAdServer(
             override fun onAdImpression() {
                 super.onAdImpression()
                 adStatusListener?.onAdImpression()
-                EventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.ADMOB)
+                eventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.ADMOB)
             }
 
             override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                 super.onAdFailedToShowFullScreenContent(p0)
                 adStatusListener?.onAdFailed(p0.message)
-                EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.ADMOB, p0.message)
+                eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.ADMOB, p0.message)
             }
 
             override fun onAdDismissedFullScreenContent() {

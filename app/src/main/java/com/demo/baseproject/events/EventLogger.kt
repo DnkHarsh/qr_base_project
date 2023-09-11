@@ -1,19 +1,23 @@
 package com.demo.baseproject.events
 
+import android.content.Context
 import android.os.Bundle
 import com.demo.baseproject.BuildConfig
 import com.demo.baseproject.ads.AdServer
 import com.demo.baseproject.ads.AdType
+import com.demo.baseproject.utils.extensions.getCountryBasedOnSimCardOrNetwork
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-object EventLogger {
+class EventLogger @Inject constructor(@ApplicationContext private val context: Context) {
 
     private val analytics = Firebase.analytics
 
     fun logScreenLoad(screenName: String) {
-        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
-            val bundle = Bundle().apply {
+        if (isReleaseBuild) {
+            val bundle = addBasicParams().apply {
                 putString("screen_name", screenName)
             }
             analytics.logEvent("screen_load", bundle)
@@ -21,8 +25,8 @@ object EventLogger {
     }
 
     fun logViewClick(viewName: String, screenName: String) {
-        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
-            val bundle = Bundle().apply {
+        if (isReleaseBuild) {
+            val bundle = addBasicParams().apply {
                 putString("view_name", viewName)
                 putString("screen_name", screenName)
             }
@@ -31,8 +35,8 @@ object EventLogger {
     }
 
     fun logAdLoaded(adType: AdType, adServer: AdServer) {
-        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
-            val bundle = Bundle().apply {
+        if (isReleaseBuild) {
+            val bundle = addBasicParams().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
             }
@@ -41,8 +45,8 @@ object EventLogger {
     }
 
     fun logAdFailed(adType: AdType, adServer: AdServer, message: String?) {
-        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
-            val bundle = Bundle().apply {
+        if (isReleaseBuild) {
+            val bundle = addBasicParams().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
                 putString("error_message", message)
@@ -52,8 +56,8 @@ object EventLogger {
     }
 
     fun logAdImpression(adType: AdType, adServer: AdServer) {
-        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
-            val bundle = Bundle().apply {
+        if (isReleaseBuild) {
+            val bundle = addBasicParams().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
             }
@@ -62,8 +66,8 @@ object EventLogger {
     }
 
     fun logAdRewardEarned(adType: AdType, adServer: AdServer) {
-        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
-            val bundle = Bundle().apply {
+        if (isReleaseBuild) {
+            val bundle = addBasicParams().apply {
                 putString("ad_type", adType.name)
                 putString("ad_server", adServer.name)
             }
@@ -72,9 +76,17 @@ object EventLogger {
     }
 
     fun logPremiumPurchased() {
-        if (BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed") {
-            val bundle = Bundle()
-            analytics.logEvent("ad_reward_earned", bundle)
+        if (isReleaseBuild) {
+            val bundle = addBasicParams()
+            analytics.logEvent("premium_purchased", bundle)
+        }
+    }
+
+    private val isReleaseBuild = BuildConfig.DEBUG.not() && BuildConfig.FLAVOR == "signed"
+
+    private fun addBasicParams(): Bundle {
+        return Bundle().apply {
+            putString("locale", context.getCountryBasedOnSimCardOrNetwork())
         }
     }
 }

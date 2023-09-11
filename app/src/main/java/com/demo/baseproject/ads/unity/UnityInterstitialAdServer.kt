@@ -10,11 +10,13 @@ import com.unity3d.ads.IUnityAdsLoadListener
 import com.unity3d.ads.IUnityAdsShowListener
 import com.unity3d.ads.UnityAds
 import com.unity3d.ads.UnityAdsShowOptions
+import javax.inject.Inject
 
 
 class UnityInterstitialAdServer(
     private val activity: Activity,
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener?
 ) : FullScreenAdListener {
 
@@ -24,7 +26,7 @@ class UnityInterstitialAdServer(
         UnityAds.load(adUnitId, object : IUnityAdsLoadListener {
             override fun onUnityAdsAdLoaded(placementId: String?) {
                 adStatusListener?.onAdLoaded()
-                EventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.UNITY)
+                eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.UNITY)
                 isAdLoaded = true
             }
 
@@ -34,7 +36,7 @@ class UnityInterstitialAdServer(
                 message: String?
             ) {
                 adStatusListener?.onAdFailed(error?.name)
-                EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.UNITY, error?.name)
+                eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.UNITY, error?.name)
             }
         })
     }
@@ -52,7 +54,7 @@ class UnityInterstitialAdServer(
                         message: String?
                     ) {
                         adStatusListener?.onAdFailed(error?.name)
-                        EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.UNITY, error?.name)
+                        eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.UNITY, error?.name)
                     }
 
                     override fun onUnityAdsShowStart(placementId: String?) {
@@ -66,7 +68,7 @@ class UnityInterstitialAdServer(
                         state: UnityAds.UnityAdsShowCompletionState?
                     ) {
                         adStatusListener?.onAdImpression()
-                        EventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.UNITY)
+                        eventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.UNITY)
                         adStatusListener?.onDismissFullScreenAd()
                     }
                 }

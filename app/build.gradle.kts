@@ -53,7 +53,7 @@ android {
             dimension = "version"
             resValue("string", "app_name", "BaseProject")
 
-            resValue("string", "ADMOB_APP_ID", "app-id")
+            resValue("string", "ADMOB_APP_ID", "ca-app-pub-3940256099942544~3347511713")
             resValue("string", "IRONSOURCE_APP_ID", "app-id")
             resValue("string", "UNITY_APP_ID", "app-id")
             resValue("string", "INMOBI_APP_ID", "app-id")
@@ -148,7 +148,7 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
 
-    implementation("com.google.android.gms:play-services-auth:20.6.0")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     // Splash
     implementation("androidx.core:core-splashscreen:1.0.1")

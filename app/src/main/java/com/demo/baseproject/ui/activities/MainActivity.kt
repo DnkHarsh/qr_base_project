@@ -6,8 +6,13 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.demo.baseproject.BuildConfig
 import com.demo.baseproject.R
+import com.demo.baseproject.ads.AdPlacementResponse
+import com.demo.baseproject.ads.AdServer
+import com.demo.baseproject.ads.AdType
+import com.demo.baseproject.ads.adformats.BannerAd
 import com.demo.baseproject.ads.listeners.AdStatusListener
 import com.demo.baseproject.databinding.ActivityMainBinding
+import com.demo.baseproject.events.EventLogger
 import com.demo.baseproject.network.NetworkConstants
 import com.demo.baseproject.notification.workmanager.NotificationWorkStart
 import com.demo.baseproject.storage.AppPref
@@ -16,6 +21,7 @@ import com.demo.baseproject.utils.GoogleInAppReview
 import com.demo.baseproject.utils.extensions.getDelayFromNowTime
 import com.demo.baseproject.utils.extensions.showMandatoryUpdateDialog
 import com.demo.baseproject.utils.extensions.showSnackBar
+import com.demo.baseproject.utils.logger.errorLog
 import com.google.android.gms.ads.MobileAds
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
@@ -46,12 +52,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     @Inject
     lateinit var firebaseRemoteConfig: FirebaseRemoteConfig
 
+    @Inject
+    lateinit var eventLogger: EventLogger
+
     private lateinit var appUpdateManager: AppUpdateManager
     private lateinit var consentInformation: ConsentInformation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+
+        // demo banner ad
+        BannerAd(
+            this,
+            binding.ads.ads,
+            AdPlacementResponse(
+                AdType.BANNER,
+                AdServer.ADMOB,
+                "ca-app-pub-3940256099942544/6300978111"
+            ),
+            eventLogger
+        ).load()
     }
 
     /**

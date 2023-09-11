@@ -10,11 +10,13 @@ import com.inmobi.ads.AdMetaInfo
 import com.inmobi.ads.InMobiAdRequestStatus
 import com.inmobi.ads.InMobiInterstitial
 import com.inmobi.ads.listeners.InterstitialAdEventListener
+import javax.inject.Inject
 
 
 class InMobiInterstitialAdServer(
     private val activity: Activity,
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener?
 ) : FullScreenAdListener {
 
@@ -27,26 +29,26 @@ class InMobiInterstitialAdServer(
             override fun onAdFetchFailed(p0: InMobiInterstitial, p1: InMobiAdRequestStatus) {
                 super.onAdFetchFailed(p0, p1)
                 adStatusListener?.onAdFailed(p1.message)
-                EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.INMOBI, p1.message)
+                eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.INMOBI, p1.message)
             }
 
             override fun onAdLoadSucceeded(p0: InMobiInterstitial, p1: AdMetaInfo) {
                 super.onAdLoadSucceeded(p0, p1)
                 adStatusListener?.onAdLoaded()
-                EventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.INMOBI)
+                eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.INMOBI)
                 isAdLoaded = true
             }
 
             override fun onAdLoadFailed(p0: InMobiInterstitial, p1: InMobiAdRequestStatus) {
                 super.onAdLoadFailed(p0, p1)
                 adStatusListener?.onAdFailed(p1.message)
-                EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.INMOBI, p1.message)
+                eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.INMOBI, p1.message)
             }
 
             override fun onAdImpression(p0: InMobiInterstitial) {
                 super.onAdImpression(p0)
                 adStatusListener?.onAdImpression()
-                EventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.INMOBI)
+                eventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.INMOBI)
             }
 
             override fun onAdDismissed(p0: InMobiInterstitial) {

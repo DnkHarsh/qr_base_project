@@ -13,6 +13,7 @@ import com.ironsource.mediationsdk.IronSourceBannerLayout
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo
 import com.ironsource.mediationsdk.logger.IronSourceError
 import com.ironsource.mediationsdk.sdk.LevelPlayBannerListener
+import javax.inject.Inject
 
 
 /**
@@ -23,8 +24,10 @@ class IronSourceBannerAdServer(
     private val activity: Activity,
     private val adLayout: ViewGroup,
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener?
 ) : BannerAdListener {
+
     private var adView: IronSourceBannerLayout? = null
 
     init {
@@ -36,7 +39,7 @@ class IronSourceBannerAdServer(
         adView?.levelPlayBannerListener = object : LevelPlayBannerListener {
             override fun onAdLoaded(p0: AdInfo?) {
                 adStatusListener?.onAdLoaded()
-                EventLogger.logAdLoaded(AdType.BANNER, AdServer.IRONSOURCE)
+                eventLogger.logAdLoaded(AdType.BANNER, AdServer.IRONSOURCE)
 
                 adLayout.removeAllViews()
                 adLayout.addView(adView)
@@ -44,7 +47,7 @@ class IronSourceBannerAdServer(
 
             override fun onAdLoadFailed(p0: IronSourceError?) {
                 adStatusListener?.onAdFailed(p0?.errorMessage)
-                EventLogger.logAdFailed(AdType.BANNER, AdServer.IRONSOURCE, p0?.errorMessage)
+                eventLogger.logAdFailed(AdType.BANNER, AdServer.IRONSOURCE, p0?.errorMessage)
             }
 
             override fun onAdClicked(p0: AdInfo?) {
@@ -55,7 +58,7 @@ class IronSourceBannerAdServer(
 
             override fun onAdScreenPresented(p0: AdInfo?) {
                 adStatusListener?.onAdImpression()
-                EventLogger.logAdImpression(AdType.BANNER, AdServer.IRONSOURCE)
+                eventLogger.logAdImpression(AdType.BANNER, AdServer.IRONSOURCE)
             }
 
             override fun onAdScreenDismissed(p0: AdInfo?) {

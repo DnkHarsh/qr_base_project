@@ -10,10 +10,12 @@ import com.unity3d.ads.IUnityAdsLoadListener
 import com.unity3d.ads.IUnityAdsShowListener
 import com.unity3d.ads.UnityAds
 import com.unity3d.ads.UnityAdsShowOptions
+import javax.inject.Inject
 
 class UnityRewardedAdServer(
     private val activity: Activity,
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener
 ) : FullScreenAdListener {
 
@@ -23,7 +25,7 @@ class UnityRewardedAdServer(
         UnityAds.load(adUnitId, object : IUnityAdsLoadListener {
             override fun onUnityAdsAdLoaded(placementId: String?) {
                 adStatusListener.onAdLoaded()
-                EventLogger.logAdLoaded(AdType.REWARDED, AdServer.UNITY)
+                eventLogger.logAdLoaded(AdType.REWARDED, AdServer.UNITY)
                 isAdLoaded = true
             }
 
@@ -33,7 +35,7 @@ class UnityRewardedAdServer(
                 message: String?
             ) {
                 adStatusListener.onAdFailed(error?.name)
-                EventLogger.logAdFailed(AdType.REWARDED, AdServer.UNITY, error?.name)
+                eventLogger.logAdFailed(AdType.REWARDED, AdServer.UNITY, error?.name)
             }
         })
     }
@@ -51,7 +53,7 @@ class UnityRewardedAdServer(
                         message: String?
                     ) {
                         adStatusListener.onAdFailed(error?.name)
-                        EventLogger.logAdFailed(AdType.REWARDED, AdServer.UNITY, error?.name)
+                        eventLogger.logAdFailed(AdType.REWARDED, AdServer.UNITY, error?.name)
                     }
 
                     override fun onUnityAdsShowStart(placementId: String?) {
@@ -66,7 +68,7 @@ class UnityRewardedAdServer(
                     ) {
                         if (state?.equals(UnityAds.UnityAdsShowCompletionState.COMPLETED) == true) {
                             adStatusListener.onUserEarnedReward()
-                            EventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.UNITY)
+                            eventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.UNITY)
                             adStatusListener.onDismissFullScreenAd()
                         }
                     }

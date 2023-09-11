@@ -9,14 +9,17 @@ import com.ironsource.mediationsdk.IronSource
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo
 import com.ironsource.mediationsdk.logger.IronSourceError
 import com.ironsource.mediationsdk.sdk.LevelPlayInterstitialListener
+import javax.inject.Inject
 
 /**
  * A class that serves a Iron Source Interstitial Ads. All the methods in this class are self-explanatory, hence not documented.
  */
 class IronSourceInterstitialAdServer(
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener?
 ) : FullScreenAdListener {
+
     init {
         initAdAndSetListener()
     }
@@ -25,12 +28,12 @@ class IronSourceInterstitialAdServer(
         IronSource.setLevelPlayInterstitialListener(object : LevelPlayInterstitialListener {
             override fun onAdReady(p0: AdInfo?) {
                 adStatusListener?.onAdLoaded()
-                EventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.IRONSOURCE)
+                eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.IRONSOURCE)
             }
 
             override fun onAdLoadFailed(p0: IronSourceError?) {
                 adStatusListener?.onAdFailed(p0?.errorMessage)
-                EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.IRONSOURCE, p0?.errorMessage)
+                eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.IRONSOURCE, p0?.errorMessage)
             }
 
             override fun onAdOpened(p0: AdInfo?) {
@@ -38,12 +41,12 @@ class IronSourceInterstitialAdServer(
 
             override fun onAdShowSucceeded(p0: AdInfo?) {
                 adStatusListener?.onAdImpression()
-                EventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.IRONSOURCE)
+                eventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.IRONSOURCE)
             }
 
             override fun onAdShowFailed(p0: IronSourceError?, p1: AdInfo?) {
                 adStatusListener?.onAdFailed(p0?.errorMessage)
-                EventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.IRONSOURCE, p0?.errorMessage)
+                eventLogger.logAdFailed(AdType.INTERSTITIAL, AdServer.IRONSOURCE, p0?.errorMessage)
             }
 
             override fun onAdClicked(p0: AdInfo?) {

@@ -10,10 +10,12 @@ import com.demo.baseproject.ads.ironsource.IronSourceRewardedAdServer
 import com.demo.baseproject.ads.listeners.AdStatusListener
 import com.demo.baseproject.ads.listeners.FullScreenAdListener
 import com.demo.baseproject.ads.unity.UnityRewardedAdServer
+import com.demo.baseproject.events.EventLogger
 
 class RewardedAd(
     private val activity: Activity,
     private val adPlacementResponse: AdPlacementResponse,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener
 ) {
     private var adListener: FullScreenAdListener? = null
@@ -27,29 +29,34 @@ class RewardedAd(
             AdServer.ADMOB -> AdmobRewardedVideoAdServer(
                 activity,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
             AdServer.GAM -> GamRewardedVideoAdServer(
                 activity,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
             AdServer.IRONSOURCE -> IronSourceRewardedAdServer(
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
             AdServer.INMOBI -> InMobiRewardedAdServer(
                 activity,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
             AdServer.UNITY -> UnityRewardedAdServer(
                 activity,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
         }

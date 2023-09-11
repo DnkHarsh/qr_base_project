@@ -11,11 +11,13 @@ import com.demo.baseproject.ads.ironsource.IronSourceBannerAdServer
 import com.demo.baseproject.ads.listeners.AdStatusListener
 import com.demo.baseproject.ads.listeners.BannerAdListener
 import com.demo.baseproject.ads.unity.UnityBannerAdServer
+import com.demo.baseproject.events.EventLogger
 
 class BannerAd(
     private val activity: Activity,
     private val adLayout: ViewGroup,
     private val adPlacementResponse: AdPlacementResponse,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener? = null
 ) {
     private var adListener: BannerAdListener? = null
@@ -30,6 +32,7 @@ class BannerAd(
                 activity,
                 adLayout,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
@@ -37,6 +40,7 @@ class BannerAd(
                 activity,
                 adLayout,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
@@ -44,6 +48,7 @@ class BannerAd(
                 activity,
                 adLayout,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
@@ -51,11 +56,13 @@ class BannerAd(
                 activity,
                 adLayout,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
             AdServer.UNITY -> UnityBannerAdServer(
                 activity, adLayout, adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
         }

@@ -7,10 +7,12 @@ import com.demo.baseproject.ads.admob.AdmobRewardedInterstitialAdServer
 import com.demo.baseproject.ads.gam.GamRewardedInterstitialAdServer
 import com.demo.baseproject.ads.listeners.AdStatusListener
 import com.demo.baseproject.ads.listeners.FullScreenAdListener
+import com.demo.baseproject.events.EventLogger
 
 class RewardedInterstitialAd(
     private val activity: Activity,
     private val adPlacementResponse: AdPlacementResponse,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener
 ) {
     private var adListener: FullScreenAdListener? = null
@@ -24,12 +26,14 @@ class RewardedInterstitialAd(
             AdServer.ADMOB -> AdmobRewardedInterstitialAdServer(
                 activity,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
             AdServer.GAM -> GamRewardedInterstitialAdServer(
                 activity,
                 adPlacementResponse.adUnitId,
+                eventLogger,
                 adStatusListener
             )
 
@@ -37,6 +41,7 @@ class RewardedInterstitialAd(
                 GamRewardedInterstitialAdServer(
                     activity,
                     adPlacementResponse.adUnitId,
+                    eventLogger,
                     adStatusListener
                 )
             }

@@ -12,6 +12,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import javax.inject.Inject
 
 /**
  * A class that serves a Admob Rewarded Video Ads. All the methods in this class are self-explanatory, hence not documented.
@@ -19,8 +20,10 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 class AdmobRewardedVideoAdServer(
     private val activity: Activity,
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener
 ) : FullScreenAdListener {
+
     private var rewardedAdObject: RewardedAd? = null
 
     init {
@@ -36,13 +39,13 @@ class AdmobRewardedVideoAdServer(
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     super.onAdFailedToLoad(adError)
                     adStatusListener.onAdFailed(adError.message)
-                    EventLogger.logAdFailed(AdType.REWARDED, AdServer.ADMOB, adError.message)
+                    eventLogger.logAdFailed(AdType.REWARDED, AdServer.ADMOB, adError.message)
                 }
 
                 override fun onAdLoaded(rewardedAd: RewardedAd) {
                     super.onAdLoaded(rewardedAd)
                     adStatusListener.onAdLoaded()
-                    EventLogger.logAdLoaded(AdType.REWARDED, AdServer.ADMOB)
+                    eventLogger.logAdLoaded(AdType.REWARDED, AdServer.ADMOB)
                     rewardedAdObject = rewardedAd
                     setScreenListener()
                 }
@@ -54,7 +57,7 @@ class AdmobRewardedVideoAdServer(
             override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                 super.onAdFailedToShowFullScreenContent(p0)
                 adStatusListener.onAdFailed(p0.message)
-                EventLogger.logAdFailed(AdType.REWARDED, AdServer.ADMOB, p0.message)
+                eventLogger.logAdFailed(AdType.REWARDED, AdServer.ADMOB, p0.message)
             }
 
             override fun onAdDismissedFullScreenContent() {
@@ -67,7 +70,7 @@ class AdmobRewardedVideoAdServer(
     override fun show() {
         rewardedAdObject?.show(activity) {
             adStatusListener.onUserEarnedReward()
-            EventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.ADMOB)
+            eventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.ADMOB)
         }
     }
 }

@@ -10,11 +10,13 @@ import com.demo.baseproject.events.EventLogger
 import com.unity3d.services.banners.BannerErrorInfo
 import com.unity3d.services.banners.BannerView
 import com.unity3d.services.banners.UnityBannerSize
+import javax.inject.Inject
 
 class UnityBannerAdServer(
     private val activity: Activity,
     private val adLayout: ViewGroup,
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener?
 ) : BannerAdListener {
 
@@ -24,7 +26,7 @@ class UnityBannerAdServer(
         adView.listener = object : BannerView.IListener {
             override fun onBannerLoaded(bannerAdView: BannerView?) {
                 adStatusListener?.onAdLoaded()
-                EventLogger.logAdLoaded(AdType.BANNER, AdServer.UNITY)
+                eventLogger.logAdLoaded(AdType.BANNER, AdServer.UNITY)
                 adStatusListener?.onAdImpression()
             }
 
@@ -36,7 +38,7 @@ class UnityBannerAdServer(
                 errorInfo: BannerErrorInfo?
             ) {
                 adStatusListener?.onAdFailed(errorInfo?.errorMessage)
-                EventLogger.logAdFailed(AdType.BANNER, AdServer.UNITY, errorInfo?.errorMessage)
+                eventLogger.logAdFailed(AdType.BANNER, AdServer.UNITY, errorInfo?.errorMessage)
             }
 
             override fun onBannerLeftApplication(bannerView: BannerView?) {

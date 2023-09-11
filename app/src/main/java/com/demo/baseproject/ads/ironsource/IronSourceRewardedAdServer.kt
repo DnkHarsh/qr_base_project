@@ -10,14 +10,17 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo
 import com.ironsource.mediationsdk.logger.IronSourceError
 import com.ironsource.mediationsdk.model.Placement
 import com.ironsource.mediationsdk.sdk.LevelPlayRewardedVideoManualListener
+import javax.inject.Inject
 
 /**
  * A class that serves a Iron Source Rewarded Video Ads. All the methods in this class are self-explanatory, hence not documented.
  */
 class IronSourceRewardedAdServer(
     private val adUnitId: String,
+    private val eventLogger: EventLogger,
     private val adStatusListener: AdStatusListener
 ) : FullScreenAdListener {
+
     init {
         initAdAndSetListener()
     }
@@ -34,22 +37,22 @@ class IronSourceRewardedAdServer(
 
             override fun onAdReady(p0: AdInfo?) {
                 adStatusListener.onAdLoaded()
-                EventLogger.logAdLoaded(AdType.REWARDED, AdServer.IRONSOURCE)
+                eventLogger.logAdLoaded(AdType.REWARDED, AdServer.IRONSOURCE)
             }
 
             override fun onAdLoadFailed(p0: IronSourceError?) {
                 adStatusListener.onAdFailed(p0?.errorMessage)
-                EventLogger.logAdFailed(AdType.REWARDED, AdServer.IRONSOURCE, p0?.errorMessage)
+                eventLogger.logAdFailed(AdType.REWARDED, AdServer.IRONSOURCE, p0?.errorMessage)
             }
 
             override fun onAdRewarded(placement: Placement, adInfo: AdInfo) {
                 adStatusListener.onUserEarnedReward()
-                EventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.IRONSOURCE)
+                eventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.IRONSOURCE)
             }
 
             override fun onAdShowFailed(error: IronSourceError, adInfo: AdInfo) {
                 adStatusListener.onAdFailed(error.errorMessage)
-                EventLogger.logAdFailed(AdType.REWARDED, AdServer.IRONSOURCE, error.errorMessage)
+                eventLogger.logAdFailed(AdType.REWARDED, AdServer.IRONSOURCE, error.errorMessage)
             }
 
             override fun onAdClicked(placement: Placement, adInfo: AdInfo) {
