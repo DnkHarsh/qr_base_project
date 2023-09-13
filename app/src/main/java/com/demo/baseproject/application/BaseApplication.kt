@@ -2,6 +2,7 @@ package com.demo.baseproject.application
 
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import com.demo.baseproject.ads.AdResponse
 import com.demo.baseproject.storage.AppPref
 import com.demo.baseproject.utils.extensions.setBaseWindowDimensions
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -18,6 +19,7 @@ class BaseApplication : MultiDexApplication() {
         lateinit var instance: BaseApplication
         var isAppWentToBg = true
         var isPurchasedPremiumInThisSession = false
+        var adResponse: AdResponse? = null
     }
 
     override fun onCreate() {
