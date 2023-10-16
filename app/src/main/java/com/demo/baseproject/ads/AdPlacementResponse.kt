@@ -9,4 +9,6 @@ data class AdPlacementResponse(
     val adServer: AdServer,
     @SerializedName("ad_unit_id")
     val adUnitId: String,
+    @SerializedName("template_type")
+    val templateType: TemplateType?
 )

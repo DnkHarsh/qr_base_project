@@ -10,7 +10,6 @@ import com.inmobi.ads.AdMetaInfo
 import com.inmobi.ads.InMobiAdRequestStatus
 import com.inmobi.ads.InMobiInterstitial
 import com.inmobi.ads.listeners.InterstitialAdEventListener
-import javax.inject.Inject
 
 
 class InMobiInterstitialAdServer(
@@ -34,9 +33,9 @@ class InMobiInterstitialAdServer(
 
             override fun onAdLoadSucceeded(p0: InMobiInterstitial, p1: AdMetaInfo) {
                 super.onAdLoadSucceeded(p0, p1)
+                isAdLoaded = true
                 adStatusListener?.onAdLoaded()
                 eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.INMOBI)
-                isAdLoaded = true
             }
 
             override fun onAdLoadFailed(p0: InMobiInterstitial, p1: InMobiAdRequestStatus) {

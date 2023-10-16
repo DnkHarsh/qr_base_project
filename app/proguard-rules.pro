@@ -58,16 +58,34 @@
   *** rewind();
 }
 
+# ---------- Ironsource ----------#
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+#noinspection ShrinkerUnresolvedReference
+#unity
+-keep class com.ironsource.unity.androidbridge.** { *;}
+-keep class com.google.android.gms.ads.** {public *;}
+-keep class com.google.android.gms.appset.** { *; }
+-keep class com.google.android.gms.tasks.** { *; }
+#adapters
+-keep class com.ironsource.adapters.** { *; }
+#sdk
+-dontwarn com.ironsource.**
+-dontwarn com.ironsource.adapters.**
+-keepclassmembers class com.ironsource.** { public *; }
+-keep public class com.ironsource.**
+-keep class com.ironsource.adapters.** { *;
+}
+#omid
+-dontwarn com.iab.omid.**
+-keep class com.iab.omid.** {*;}
+#javascript
+-keepattributes JavascriptInterface
+-keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
+# ---------- Ironsource ----------#
 
--ignorewarnings
-
--dontwarn com.module.**
--keep class com.module.** { *; }
-
--dontwarn com.common.**
--keep class com.common.** { *; }
-
-# inmobi
+# ---------- InMobi ----------#
 -keepattributes SourceFile,LineNumberTable
 -keep class com.inmobi.** { *; }
 -keep public class com.google.android.gms.**
@@ -88,3 +106,4 @@
 # skip IAB classes
 -keep class com.iab.** {*;}
 -dontwarn com.iab.**
+# ---------- InMobi ----------#

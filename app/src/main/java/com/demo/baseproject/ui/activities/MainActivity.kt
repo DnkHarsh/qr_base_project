@@ -4,12 +4,9 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import com.applovin.sdk.AppLovinSdk
 import com.demo.baseproject.BuildConfig
 import com.demo.baseproject.R
-import com.demo.baseproject.ads.AdPlacementResponse
-import com.demo.baseproject.ads.AdServer
-import com.demo.baseproject.ads.AdType
-import com.demo.baseproject.ads.adformats.BannerAd
 import com.demo.baseproject.ads.listeners.AdStatusListener
 import com.demo.baseproject.databinding.ActivityMainBinding
 import com.demo.baseproject.events.EventLogger
@@ -21,7 +18,6 @@ import com.demo.baseproject.utils.GoogleInAppReview
 import com.demo.baseproject.utils.extensions.getDelayFromNowTime
 import com.demo.baseproject.utils.extensions.showMandatoryUpdateDialog
 import com.demo.baseproject.utils.extensions.showSnackBar
-import com.demo.baseproject.utils.logger.errorLog
 import com.google.android.gms.ads.MobileAds
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
@@ -45,6 +41,7 @@ import org.json.JSONObject
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate),
     AdStatusListener {
@@ -61,18 +58,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
-
-        // demo banner ad
-        BannerAd(
-            this,
-            binding.ads.ads,
-            AdPlacementResponse(
-                AdType.BANNER,
-                AdServer.ADMOB,
-                "ca-app-pub-3940256099942544/6300978111"
-            ),
-            eventLogger
-        ).load()
     }
 
     /**
@@ -125,6 +110,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 override fun onInitializationComplete(error: Error?) {
                 }
             })
+
+        AppLovinSdk.getInstance(this).mediationProvider = "max"
+        AppLovinSdk.initializeSdk(this) {
+        }
     }
 
     /**

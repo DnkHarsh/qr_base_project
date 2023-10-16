@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/image_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.gms.ads.nativead.NativeAdView
+            android:id="@+id/native_ad_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/gnt_white">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.gms.ads.nativead.MediaView
+                    android:id="@+id/media_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/gnt_no_size"
+                    android:layout_marginTop="@dimen/gnt_no_margin"
+                    android:maxHeight="180dp"
+                    app:layout_constraintDimensionRatio="H,2:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/ad_notification_view"
+                    android:layout_width="@dimen/gnt_ad_indicator_width"
+                    android:layout_height="@dimen/gnt_ad_indicator_height"
+                    android:layout_marginStart="@dimen/gnt_no_margin"
+                    android:layout_marginTop="@dimen/gnt_ad_indicator_top_margin"
+                    android:layout_marginEnd="@dimen/gnt_default_margin"
+                    android:background="@drawable/ad_rounded_corners_shape"
+                    android:gravity="center"
+                    android:text="Ad"
+                    android:textColor="@color/gnt_black"
+                    android:textSize="@dimen/gnt_ad_indicator_text_size"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/media_view"
+                    app:layout_constraintTop_toTopOf="@+id/media_view" />
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="@dimen/gnt_default_margin"
+                    android:layout_marginTop="@dimen/gnt_default_margin"
+                    android:layout_marginEnd="@dimen/gnt_no_margin"
+                    android:layout_marginBottom="@dimen/gnt_no_margin"
+                    android:layout_weight="0"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintStart_toStartOf="@+id/media_view"
+                    app:layout_constraintTop_toBottomOf="@+id/media_view" />
+
+                <TextView
+                    android:id="@+id/primary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/gnt_default_margin"
+                    android:layout_marginTop="@dimen/gnt_default_margin"
+                    android:layout_marginEnd="@dimen/gnt_no_margin"
+                    android:layout_marginBottom="@dimen/gnt_no_margin"
+                    android:background="@color/gnt_white"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textColor="@color/gnt_gray"
+                    android:textSize="@dimen/gnt_text_size_large"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/cta"
+                    app:layout_constraintStart_toEndOf="@id/icon"
+                    app:layout_constraintTop_toTopOf="@id/icon"
+                    tools:text="Title: Download PugbG and play with your" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="@dimen/gnt_default_margin"
+                    android:background="@drawable/button_bg"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:paddingHorizontal="10dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gnt_white"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/primary"
+                    app:layout_constraintTop_toTopOf="@id/primary"
+                    tools:text="Know More" />
+
+                <TextView
+                    android:id="@+id/secondary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/gnt_no_margin"
+                    android:layout_marginTop="@dimen/gnt_default_margin"
+                    android:layout_marginEnd="@dimen/gnt_default_margin"
+                    android:layout_marginBottom="@dimen/gnt_no_margin"
+                    android:background="@color/gnt_white"
+                    android:gravity="top"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/gnt_gray"
+                    android:textSize="@dimen/gnt_text_size_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/primary"
+                    app:layout_constraintTop_toBottomOf="@id/primary" />
+
+                <TextView
+                    android:id="@+id/body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gnt_default_margin"
+                    android:layout_marginEnd="@dimen/gnt_default_margin"
+                    android:layout_marginBottom="@dimen/gnt_default_margin"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:paddingBottom="@dimen/gnt_default_margin"
+                    android:textColor="@color/gnt_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/primary"
+                    app:layout_constraintTop_toBottomOf="@id/secondary" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.gms.ads.nativead.NativeAdView>
+    </androidx.cardview.widget.CardView>
+</merge>

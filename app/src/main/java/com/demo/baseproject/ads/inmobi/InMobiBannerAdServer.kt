@@ -11,7 +11,6 @@ import com.inmobi.ads.AdMetaInfo
 import com.inmobi.ads.InMobiAdRequestStatus
 import com.inmobi.ads.InMobiBanner
 import com.inmobi.ads.listeners.BannerAdEventListener
-import javax.inject.Inject
 
 class InMobiBannerAdServer(
     private val ctx: Context,
@@ -25,7 +24,7 @@ class InMobiBannerAdServer(
 
     init {
         adView.setEnableAutoRefresh(true)
-        adView.setRefreshInterval(60)
+        adView.setRefreshInterval(30)
         adView.setAnimationType(InMobiBanner.AnimationType.ANIMATION_ALPHA)
         adView.setListener(object : BannerAdEventListener() {
             override fun onAdFetchFailed(p0: InMobiBanner, p1: InMobiAdRequestStatus) {

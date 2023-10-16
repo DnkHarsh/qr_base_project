@@ -12,7 +12,6 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import javax.inject.Inject
 
 /**
  * A class that serves a Admob Rewarded Video Ads. All the methods in this class are self-explanatory, hence not documented.
@@ -44,10 +43,10 @@ class AdmobInterstitialAdServer(
 
                 override fun onAdLoaded(rewardedAd: InterstitialAd) {
                     super.onAdLoaded(rewardedAd)
-                    adStatusListener?.onAdLoaded()
-                    eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.ADMOB)
                     interstitialAd = rewardedAd
                     setScreenListener()
+                    adStatusListener?.onAdLoaded()
+                    eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.ADMOB)
                 }
             })
     }

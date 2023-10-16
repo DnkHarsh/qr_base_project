@@ -1,7 +1,6 @@
 package com.demo.baseproject.ads.inmobi
 
 import android.app.Activity
-import android.util.Log
 import com.demo.baseproject.ads.AdServer
 import com.demo.baseproject.ads.AdType
 import com.demo.baseproject.ads.listeners.AdStatusListener
@@ -11,7 +10,6 @@ import com.inmobi.ads.AdMetaInfo
 import com.inmobi.ads.InMobiAdRequestStatus
 import com.inmobi.ads.InMobiInterstitial
 import com.inmobi.ads.listeners.InterstitialAdEventListener
-import javax.inject.Inject
 
 
 class InMobiRewardedAdServer(
@@ -29,9 +27,9 @@ class InMobiRewardedAdServer(
             InterstitialAdEventListener() {
             override fun onAdLoadSucceeded(p0: InMobiInterstitial, p1: AdMetaInfo) {
                 super.onAdLoadSucceeded(p0, p1)
+                isAdLoaded = true
                 adStatusListener.onAdLoaded()
                 eventLogger.logAdLoaded(AdType.REWARDED, AdServer.INMOBI)
-                isAdLoaded = true
             }
 
             override fun onAdLoadFailed(p0: InMobiInterstitial, p1: InMobiAdRequestStatus) {
@@ -44,9 +42,6 @@ class InMobiRewardedAdServer(
                 super.onRewardsUnlocked(p0, p1)
                 adStatusListener.onUserEarnedReward()
                 eventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.INMOBI)
-                p1?.forEach {
-                    Log.v("ISHAN", "Unlocked " + it.key + " " + it.value)
-                }
             }
 
             override fun onAdDismissed(p0: InMobiInterstitial) {

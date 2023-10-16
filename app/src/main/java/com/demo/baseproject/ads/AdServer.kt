@@ -5,5 +5,6 @@ enum class AdServer {
     GAM,
     IRONSOURCE,
     INMOBI,
-    UNITY
+    UNITY,
+    APPLOVIN
 }

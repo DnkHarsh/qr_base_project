@@ -7,13 +7,11 @@ import com.demo.baseproject.ads.AdType
 import com.demo.baseproject.ads.listeners.AdStatusListener
 import com.demo.baseproject.ads.listeners.BannerAdListener
 import com.demo.baseproject.events.EventLogger
-import com.demo.baseproject.utils.logger.errorLog
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
-import javax.inject.Inject
 
 /**
  * A class that serves a Admob Banner Ads. All the methods in this class are self-explanatory, hence not documented.
@@ -40,11 +38,10 @@ class AdmobBannerAdServer(
         adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 super.onAdLoaded()
-                adStatusListener?.onAdLoaded()
-                eventLogger.logAdLoaded(AdType.BANNER, AdServer.ADMOB)
-
                 adLayout.removeAllViews()
                 adLayout.addView(adView)
+                adStatusListener?.onAdLoaded()
+                eventLogger.logAdLoaded(AdType.BANNER, AdServer.ADMOB)
             }
 
             override fun onAdFailedToLoad(p0: LoadAdError) {

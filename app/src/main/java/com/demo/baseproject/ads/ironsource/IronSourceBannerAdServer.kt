@@ -13,7 +13,6 @@ import com.ironsource.mediationsdk.IronSourceBannerLayout
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo
 import com.ironsource.mediationsdk.logger.IronSourceError
 import com.ironsource.mediationsdk.sdk.LevelPlayBannerListener
-import javax.inject.Inject
 
 
 /**
@@ -38,11 +37,10 @@ class IronSourceBannerAdServer(
         IronSource.loadBanner(adView, adUnitId)
         adView?.levelPlayBannerListener = object : LevelPlayBannerListener {
             override fun onAdLoaded(p0: AdInfo?) {
-                adStatusListener?.onAdLoaded()
-                eventLogger.logAdLoaded(AdType.BANNER, AdServer.IRONSOURCE)
-
                 adLayout.removeAllViews()
                 adLayout.addView(adView)
+                adStatusListener?.onAdLoaded()
+                eventLogger.logAdLoaded(AdType.BANNER, AdServer.IRONSOURCE)
             }
 
             override fun onAdLoadFailed(p0: IronSourceError?) {

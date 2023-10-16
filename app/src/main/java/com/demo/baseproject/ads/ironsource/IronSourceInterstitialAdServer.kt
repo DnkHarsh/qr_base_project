@@ -9,7 +9,6 @@ import com.ironsource.mediationsdk.IronSource
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo
 import com.ironsource.mediationsdk.logger.IronSourceError
 import com.ironsource.mediationsdk.sdk.LevelPlayInterstitialListener
-import javax.inject.Inject
 
 /**
  * A class that serves a Iron Source Interstitial Ads. All the methods in this class are self-explanatory, hence not documented.

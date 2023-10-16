@@ -10,7 +10,6 @@ import com.unity3d.ads.IUnityAdsLoadListener
 import com.unity3d.ads.IUnityAdsShowListener
 import com.unity3d.ads.UnityAds
 import com.unity3d.ads.UnityAdsShowOptions
-import javax.inject.Inject
 
 
 class UnityInterstitialAdServer(
@@ -25,9 +24,9 @@ class UnityInterstitialAdServer(
     init {
         UnityAds.load(adUnitId, object : IUnityAdsLoadListener {
             override fun onUnityAdsAdLoaded(placementId: String?) {
+                isAdLoaded = true
                 adStatusListener?.onAdLoaded()
                 eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.UNITY)
-                isAdLoaded = true
             }
 
             override fun onUnityAdsFailedToLoad(
@@ -68,8 +67,8 @@ class UnityInterstitialAdServer(
                         state: UnityAds.UnityAdsShowCompletionState?
                     ) {
                         adStatusListener?.onAdImpression()
-                        eventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.UNITY)
                         adStatusListener?.onDismissFullScreenAd()
+                        eventLogger.logAdImpression(AdType.INTERSTITIAL, AdServer.UNITY)
                     }
                 }
             )

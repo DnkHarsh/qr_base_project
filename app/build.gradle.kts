@@ -18,7 +18,7 @@ android {
     defaultConfig {
         applicationId = "com.demo.baseproject"
 
-        minSdk = 23
+        minSdk = 24
         targetSdk = 34
         compileSdk = 34
 
@@ -45,6 +45,7 @@ android {
             resValue("string", "IRONSOURCE_APP_ID", "app-id")
             resValue("string", "UNITY_APP_ID", "app-id")
             resValue("string", "INMOBI_APP_ID", "app-id")
+            resValue("string", "APPLOVIN", "app-id")
 
             resValue("string", "PRODUCT_ID_IN", "product-id")
             resValue("string", "PRODUCT_ID_ROW", "product-id")
@@ -57,6 +58,7 @@ android {
             resValue("string", "IRONSOURCE_APP_ID", "app-id")
             resValue("string", "UNITY_APP_ID", "app-id")
             resValue("string", "INMOBI_APP_ID", "app-id")
+            resValue("string", "APPLOVIN", "app-id")
 
             resValue("string", "PRODUCT_ID_IN", "product-id")
             resValue("string", "PRODUCT_ID_ROW", "product-id")
@@ -108,6 +110,7 @@ android.packaging {
 
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
+    implementation(project(mapOf("path" to ":nativetemplates")))
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     testImplementation("junit:junit:4.13.2")
@@ -117,13 +120,13 @@ dependencies {
 
     implementation("androidx.browser:browser:1.6.0")
     implementation("androidx.recyclerview:recyclerview:1.3.1")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.22")
 
     // Material
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
 
     // KTX
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
 
     // Work manager
@@ -136,8 +139,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:31.3.0"))
@@ -162,16 +165,16 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-process:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
     // Ads/Mediation
-    implementation("com.google.android.gms:play-services-ads:22.3.0")
+    implementation("com.google.android.gms:play-services-ads:22.4.0")
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
     implementation("com.google.android.gms:play-services-location:21.0.1")
-    implementation("com.ironsource.sdk:mediationsdk:7.3.1.1")
-    implementation("com.unity3d.ads:unity-ads:4.7.0")
+    implementation("com.ironsource.sdk:mediationsdk:7.5.1")
+    implementation("com.unity3d.ads:unity-ads:4.8.0")
     implementation("com.inmobi.monetization:inmobi-ads-kotlin:10.5.7")
     implementation("com.inmobi.omsdk:inmobi-omsdk:1.3.17.1")
 
@@ -182,7 +185,7 @@ dependencies {
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
     // Image/Animation loading
-    implementation("com.github.bumptech.glide:glide:4.14.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.squareup.picasso:picasso:2.8")
     implementation("com.airbnb.android:lottie:5.2.0")
 }

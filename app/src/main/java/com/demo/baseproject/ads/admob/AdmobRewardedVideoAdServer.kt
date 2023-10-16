@@ -12,7 +12,6 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
-import javax.inject.Inject
 
 /**
  * A class that serves a Admob Rewarded Video Ads. All the methods in this class are self-explanatory, hence not documented.
@@ -44,10 +43,10 @@ class AdmobRewardedVideoAdServer(
 
                 override fun onAdLoaded(rewardedAd: RewardedAd) {
                     super.onAdLoaded(rewardedAd)
-                    adStatusListener.onAdLoaded()
-                    eventLogger.logAdLoaded(AdType.REWARDED, AdServer.ADMOB)
                     rewardedAdObject = rewardedAd
                     setScreenListener()
+                    adStatusListener.onAdLoaded()
+                    eventLogger.logAdLoaded(AdType.REWARDED, AdServer.ADMOB)
                 }
             })
     }

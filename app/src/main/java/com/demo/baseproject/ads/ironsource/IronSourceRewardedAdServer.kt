@@ -10,7 +10,6 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo
 import com.ironsource.mediationsdk.logger.IronSourceError
 import com.ironsource.mediationsdk.model.Placement
 import com.ironsource.mediationsdk.sdk.LevelPlayRewardedVideoManualListener
-import javax.inject.Inject
 
 /**
  * A class that serves a Iron Source Rewarded Video Ads. All the methods in this class are self-explanatory, hence not documented.

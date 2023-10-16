@@ -12,7 +12,6 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.admanager.AdManagerAdRequest
 import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
 import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import javax.inject.Inject
 
 /**
  * A class that serves a Gam Rewarded Videos Ad. All the methods in this class are self-explanatory, hence not documented.
@@ -38,10 +37,10 @@ class GamInterstitialAdServer(
             object : AdManagerInterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: AdManagerInterstitialAd) {
                     super.onAdLoaded(ad)
-                    adStatusListener?.onAdLoaded()
-                    eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.GAM)
                     interstitialAd = ad
                     setScreenListener()
+                    adStatusListener?.onAdLoaded()
+                    eventLogger.logAdLoaded(AdType.INTERSTITIAL, AdServer.GAM)
                 }
 
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {

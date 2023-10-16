@@ -10,7 +10,6 @@ import com.unity3d.ads.IUnityAdsLoadListener
 import com.unity3d.ads.IUnityAdsShowListener
 import com.unity3d.ads.UnityAds
 import com.unity3d.ads.UnityAdsShowOptions
-import javax.inject.Inject
 
 class UnityRewardedAdServer(
     private val activity: Activity,
@@ -24,9 +23,9 @@ class UnityRewardedAdServer(
     init {
         UnityAds.load(adUnitId, object : IUnityAdsLoadListener {
             override fun onUnityAdsAdLoaded(placementId: String?) {
+                isAdLoaded = true
                 adStatusListener.onAdLoaded()
                 eventLogger.logAdLoaded(AdType.REWARDED, AdServer.UNITY)
-                isAdLoaded = true
             }
 
             override fun onUnityAdsFailedToLoad(
@@ -69,8 +68,8 @@ class UnityRewardedAdServer(
                         if (state?.equals(UnityAds.UnityAdsShowCompletionState.COMPLETED) == true) {
                             adStatusListener.onUserEarnedReward()
                             eventLogger.logAdRewardEarned(AdType.REWARDED, AdServer.UNITY)
-                            adStatusListener.onDismissFullScreenAd()
                         }
+                        adStatusListener.onDismissFullScreenAd()
                     }
                 }
             )

@@ -12,7 +12,6 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.admanager.AdManagerAdRequest
 import com.google.android.gms.ads.admanager.AdManagerAdView
-import javax.inject.Inject
 
 /**
  * A class that serves a GAM BannerAd [adView]. All the methods in this class are self-explanatory, hence not documented
@@ -39,11 +38,10 @@ class GamBannerAdServer(
         adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 super.onAdLoaded()
-                adStatusListener?.onAdLoaded()
-                eventLogger.logAdLoaded(AdType.BANNER, AdServer.GAM)
-
                 adLayout.removeAllViews()
                 adLayout.addView(adView)
+                adStatusListener?.onAdLoaded()
+                eventLogger.logAdLoaded(AdType.BANNER, AdServer.GAM)
             }
 
             override fun onAdFailedToLoad(p0: LoadAdError) {
