@@ -6,6 +6,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Base QrCode"
+rootProject.name = "QrCode Base"
 include(":app")
 include(":nativetemplates")
